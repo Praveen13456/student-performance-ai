@@ -3,8 +3,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import pandas as pd
 import joblib
-import requests
+from google import genai
 import os
+
+# --------------------------------
+# Gemini AI client
+# --------------------------------
+
+client = genai.Client(
+    api_key=os.environ.get("GEMINI_API_KEY")
+)
+
 # --------------------------------
 # Create FastAPI application
 # --------------------------------
@@ -174,45 +183,19 @@ Important rules:
 
     try:
 
-        response = requests.post(
-            "http://127.0.0.1:11434/api/chat",
-
-            json={
-                "model": "oamazonasgabriel/lfm2.5-230m:bf16-8gbRAM",
-
-                "messages": [
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
-
-                "stream": False,
-
-                "options": {
-                    "temperature": 0.4,
-                    "num_ctx": 8192
-                }
-            },
-
-            timeout=120
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
         )
 
-        response.raise_for_status()
-
-        data = response.json()
-
-        answer = data["message"]["content"]
-
         return {
-            "answer": answer
+            "answer": response.text
         }
 
     except Exception as e:
 
-        print("Ollama Error:", e)
+        print("Gemini Error:", e)
 
         return {
-            "answer":
-                "Sorry, I couldn't connect to the local AI advisor right now. Please make sure Ollama is running."
+            "answer": "Sorry, I couldn't connect to the AI advisor right now. Please try again."
         }
