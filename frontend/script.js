@@ -322,9 +322,7 @@ form.addEventListener(
         try {
 
             const response =
-                await fetch(
-                    "http://127.0.0.1:8001/predict",
-                    {
+                await fetch("https://student-performance-ai-lcta.onrender.com/predict", {
                         method: "POST",
 
                         headers: {
@@ -944,9 +942,7 @@ async function sendChatMessage() {
         // =================================================
 
         const response =
-            await fetch(
-                "http://127.0.0.1:8001/chat",
-                {
+            await fetch("https://student-performance-ai-lcta.onrender.com/chat", {
                     method: "POST",
 
                     headers: {
