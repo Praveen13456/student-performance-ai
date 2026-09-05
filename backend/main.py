@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import pandas as pd
 import joblib
 import requests
+import os
 # --------------------------------
 # Create FastAPI application
 # --------------------------------
@@ -32,7 +33,10 @@ app.add_middleware(
 # Load trained ML model
 # --------------------------------
 
-model = joblib.load("models/student_model.pkl")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "student_model.pkl")
+
+model = joblib.load(MODEL_PATH)
 
 
 # --------------------------------
