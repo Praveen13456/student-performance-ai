@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeuroGrade AI | Student Performance Predictor</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="app">
+
+        <!-- NAVBAR -->
+
+        <nav class="navbar">
+
+            <div class="logo">
+                <div class="logo-icon">N</div>
+
+                <div>
+                    <h2>NeuroGrade</h2>
+                    <span>AI PERFORMANCE SYSTEM</span>
+                </div>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                AI MODEL ONLINE
+            </div>
+
+        </nav>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    <span>✦</span>
+                    MACHINE LEARNING POWERED
+                </div>
+
+                <h1>
+                    Predict the Future of
+                    <span>Student Performance</span>
+                </h1>
+
+                <p>
+                    Analyze academic patterns and generate intelligent
+                    performance predictions using your trained AI model.
+                </p>
+
+            </div>
+
+            <div class="ai-core">
+
+                <div class="core-ring ring-one"></div>
+                <div class="core-ring ring-two"></div>
+                <div class="core-ring ring-three"></div>
+
+                <div class="core">
+                    <span>AI</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="dashboard">
+
+            <!-- INPUT PANEL -->
+
+            <section class="glass-card input-card">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">01 / INPUT DATA</span>
+                        <h2>Student Profile</h2>
+                    </div>
+
+                    <div class="icon-box">⌁</div>
+
+                </div>
+
+
+                <form id="predictionForm">
+
+                    <div class="input-grid">
+
+                        <div class="input-group">
+
+                            <label for="age">
+                                <span>AGE</span>
+                                <small>Years</small>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="age"
+                                placeholder="19"
+                                min="10"
+                                max="100"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="study_hours">
+                                <span>STUDY HOURS</span>
+                                <small>Per day</small>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="study_hours"
+                                placeholder="5.0"
+                                min="0"
+                                max="24"
+                                step="0.1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="attendance">
+                                <span>ATTENDANCE</span>
+                                <small>Percentage</small>
+                            </label>
+
+                            <div class="input-unit">
+                                <input
+                                    type="number"
+                                    id="attendance"
+                                    placeholder="90"
+                                    min="0"
+                                    max="100"
+                                    step="0.1"
+                                    required
+                                >
+                                <span>%</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="input-group">
+    <label>Previous Score / CGPA</label>
+
+    <div class="score-row">
+        <input
+            type="number"
+            id="previous_score"
+            min="0"
+            step="0.01"
+            placeholder="Score"
+        >
+
+        <span>/</span>
+
+        <input
+            type="number"
+            id="previous_total"
+            min="0.01"
+            step="0.01"
+            placeholder="Total"
+        >
+    </div>
+
+    <small id="previousPercentage">Percentage: —</small>
+</div>
+
+
+<div class="input-group">
+    <label>Assignment Score</label>
+
+    <div class="score-row">
+        <input
+            type="number"
+            id="assignment_score"
+            min="0"
+            step="0.01"
+            placeholder="Score"
+        >
+
+        <span>/</span>
+
+        <input
+            type="number"
+            id="assignment_total"
+            min="0.01"
+            step="0.01"
+            placeholder="Total"
+        >
+    </div>
+
+    <small id="assignmentPercentage">Percentage: —</small>
+</div>
+
+
+<div class="input-group">
+    <label>Midterm Score</label>
+
+    <div class="score-row">
+        <input
+            type="number"
+            id="midterm_score"
+            min="0"
+            step="0.01"
+            placeholder="Score"
+        >
+
+        <span>/</span>
+
+        <input
+            type="number"
+            id="midterm_total"
+            min="0.01"
+            step="0.01"
+            placeholder="Total"
+        >
+    </div>
+
+    <small id="midtermPercentage">Percentage: —</small>
+</div>
+
+
+                        <div class="input-group">
+
+                            <label for="sleep_hours">
+                                <span>SLEEP HOURS</span>
+                                <small>Per day</small>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="sleep_hours"
+                                placeholder="7"
+                                min="0"
+                                max="24"
+                                step="0.1"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="extracurricular">
+                                <span>EXTRACURRICULAR</span>
+                                <small>Activities</small>
+                            </label>
+
+                            <select id="extracurricular" required>
+
+                                <option value="">Select status</option>
+                                <option value="1">Active</option>
+                                <option value="0">Not Active</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" id="predictButton">
+
+                        <span class="button-icon">✦</span>
+
+                        <span class="button-text">
+                            ANALYZE PERFORMANCE
+                        </span>
+
+                        <span class="button-arrow">→</span>
+
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- RESULT PANEL -->
+
+            <section class="glass-card result-card" id="resultCard">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">02 / AI ANALYSIS</span>
+                        <h2>Prediction Results</h2>
+                    </div>
+
+                    <div class="prediction-status">
+                        READY
+                    </div>
+
+                </div>
+
+
+                <div class="score-display">
+
+                    <div class="score-circle">
+
+                        <div class="score-inner">
+
+                            <span id="predictedScore">--</span>
+                            <small>PREDICTED SCORE</small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="score-info">
+
+                        <p>
+                            AI confidence analysis
+                        </p>
+
+                        <div class="confidence-line">
+
+                            <div class="confidence-fill"></div>
+
+                        </div>
+
+                        <span class="confidence-text">
+                            MODEL ANALYSIS COMPLETE
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-grid">
+
+                    <div class="result-box">
+
+                        <span class="result-icon">◆</span>
+
+                        <div>
+                            <small>GRADE</small>
+                            <strong id="grade">--</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <span class="result-icon">◈</span>
+
+                        <div>
+                            <small>PERFORMANCE</small>
+                            <strong id="performance">--</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-box">
+
+                        <span class="result-icon">⚠</span>
+
+                        <div>
+                            <small>RISK LEVEL</small>
+                            <strong id="risk">--</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <div>
+                NEUROGRADE AI
+                <span>•</span>
+                STUDENT ANALYTICS ENGINE
+            </div>
+
+            <div>
+                POWERED BY
+                <span>PYTHON · SCIKIT-LEARN · FASTAPI</span>
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    
+ <!-- =====================================================
+     AI STUDENT ADVISOR CHATBOT
+     ===================================================== -->
+
+<section class="chatbot-section">
+
+    <div class="chatbot-header">
+
+        <div>
+            <span class="chatbot-badge">AI ADVISOR</span>
+
+            <h2>Student Performance Advisor</h2>
+
+            <p>
+                Ask questions about your academic performance
+                and get personalized improvement suggestions.
+            </p>
+        </div>
+
+        <div class="chatbot-status">
+            <span class="status-dot"></span>
+            AI ONLINE
+        </div>
+
+    </div>
+
+
+    <div class="chatbot-box">
+
+        <!-- Chat messages -->
+        <div id="chatMessages" class="chat-messages">
+
+            <div class="chat-message bot-message">
+
+                <div class="message-avatar">
+                    ✦
+                </div>
+
+                <div class="message-content">
+
+                    <strong>NeuroGrade AI</strong>
+
+                    <p>
+                        Hi! I'm your AI Student Advisor.
+                        Ask me anything about improving your
+                        academic performance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Suggested questions -->
+
+        <div class="suggested-questions">
+
+            <button
+                type="button"
+                onclick="askSuggestedQuestion('How can I improve my performance?')"
+            >
+                How can I improve?
+            </button>
+
+            <button
+                type="button"
+                onclick="askSuggestedQuestion('Why is my predicted score low?')"
+            >
+                Why is my score low?
+            </button>
+
+            <button
+                type="button"
+                onclick="askSuggestedQuestion('How much should I study every day?')"
+            >
+                How much should I study?
+            </button>
+
+        </div>
+
+
+        <!-- Chat input -->
+
+        <div class="chat-input-area">
+
+            <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask your question..."
+                autocomplete="off"
+            >
+
+            <button
+                type="button"
+                id="chatSendButton"
+                onclick="sendChatMessage()"
+            >
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+<script src="script.js"></script>
+
+</section>
+</body>
+</html>
