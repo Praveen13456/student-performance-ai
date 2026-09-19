@@ -9,7 +9,7 @@ services:
       - key: OLLAMA_URL
         sync: false
       - key: OLLAMA_MODEL
-        value: llama3.2
+        value: oamazonasgabriel/lfm2.5-230m:bf16-8gbRAM
       - key: OLLAMA_TIMEOUT_SECONDS
         value: "120"
       - key: OLLAMA_API_KEY

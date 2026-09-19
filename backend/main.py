@@ -11,7 +11,10 @@ OLLAMA_URL = os.environ.get(
     "OLLAMA_URL",
     "http://127.0.0.1:11434/api/chat"
 )
-OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "llama3.2")
+OLLAMA_MODEL = os.environ.get(
+    "OLLAMA_MODEL",
+    "oamazonasgabriel/lfm2.5-230m:bf16-8gbRAM"
+)
 OLLAMA_API_KEY = os.environ.get("OLLAMA_API_KEY")
 OLLAMA_TIMEOUT_SECONDS = int(os.environ.get("OLLAMA_TIMEOUT_SECONDS", "120"))
 

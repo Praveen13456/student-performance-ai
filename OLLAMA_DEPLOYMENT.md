@@ -7,8 +7,13 @@ a Cloudflare Tunnel, and configure Render to use the tunnel URL.
 ## Run the local model
 
 ```powershell
-ollama pull llama3.2
 ollama serve
+```
+
+The currently configured model is:
+
+```text
+oamazonasgabriel/lfm2.5-230m:bf16-8gbRAM
 ```
 
 Verify it locally:
@@ -34,13 +39,17 @@ https://example.trycloudflare.com/api/chat
 The temporary URL changes when the tunnel restarts. A named Cloudflare Tunnel
 with an Access service token is safer for a long-running deployment.
 
+For a quick demo, the frontend API URL in `frontend/script.js` can point to a
+Cloudflare Tunnel for the local FastAPI server. The computer running FastAPI,
+Ollama, and the tunnel must remain online.
+
 ## Configure Render
 
 In the Render service environment settings, add:
 
 ```text
 OLLAMA_URL=https://example.trycloudflare.com/api/chat
-OLLAMA_MODEL=llama3.2
+OLLAMA_MODEL=oamazonasgabriel/lfm2.5-230m:bf16-8gbRAM
 OLLAMA_TIMEOUT_SECONDS=120
 ```
 

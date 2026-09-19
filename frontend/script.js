@@ -1,3 +1,6 @@
+const API_BASE_URL =
+    "https://live-lang-minimize-calendars.trycloudflare.com";
+
 const form = document.getElementById("predictionForm");
 const predictButton = document.getElementById("predictButton");
 
@@ -322,7 +325,7 @@ form.addEventListener(
         try {
 
             const response =
-                await fetch("https://student-performance-ai-lcta.onrender.com/predict", {
+                await fetch(`${API_BASE_URL}/predict`, {
                         method: "POST",
 
                         headers: {
@@ -942,7 +945,7 @@ async function sendChatMessage() {
         // =================================================
 
         const response =
-            await fetch("https://student-performance-ai-lcta.onrender.com/chat", {
+            await fetch(`${API_BASE_URL}/chat`, {
                     method: "POST",
 
                     headers: {
