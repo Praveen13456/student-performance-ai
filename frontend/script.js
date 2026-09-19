@@ -1031,7 +1031,7 @@ async function sendChatMessage() {
 
         // Show error
         addChatMessage(
-            "I couldn't connect to the AI advisor. Please make sure the FastAPI server and Ollama are running.",
+            "I couldn't connect to the AI advisor. Please try again later.",
             "bot"
         );
 
