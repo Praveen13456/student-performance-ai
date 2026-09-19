@@ -1,5 +1,4 @@
-const API_BASE_URL =
-    "https://live-lang-minimize-calendars.trycloudflare.com";
+const API_BASE_URL = "";
 
 const form = document.getElementById("predictionForm");
 const predictButton = document.getElementById("predictButton");

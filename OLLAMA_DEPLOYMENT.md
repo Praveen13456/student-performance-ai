@@ -39,9 +39,9 @@ https://example.trycloudflare.com/api/chat
 The temporary URL changes when the tunnel restarts. A named Cloudflare Tunnel
 with an Access service token is safer for a long-running deployment.
 
-For a quick demo, the frontend API URL in `frontend/script.js` can point to a
-Cloudflare Tunnel for the local FastAPI server. The computer running FastAPI,
-Ollama, and the tunnel must remain online.
+The FastAPI service serves the frontend and API from the same Render URL, so
+the browser uses relative `/predict` and `/chat` paths. The computer running
+Ollama and its tunnel must remain online for the chatbot only.
 
 ## Configure Render
 

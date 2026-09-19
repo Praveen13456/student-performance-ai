@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 import pandas as pd
 import joblib
@@ -65,6 +67,7 @@ app.add_middleware(
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_PATH = os.path.join(BASE_DIR, "models", "student_model.pkl")
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
 
 model = joblib.load(MODEL_PATH)
 
@@ -102,9 +105,12 @@ class ChatRequest(BaseModel):
 
 @app.get("/")
 def home():
-    return {
-        "message": "AI Student Performance Prediction API is running!"
-    }
+    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 
 # --------------------------------
@@ -226,3 +232,10 @@ Student question:
             status_code=503,
             detail="The AI advisor is temporarily unavailable."
         ) from error
+
+
+app.mount(
+    "/",
+    StaticFiles(directory=FRONTEND_DIR, html=True),
+    name="frontend"
+)
